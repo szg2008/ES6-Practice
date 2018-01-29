@@ -1,3 +1,5 @@
+import Region from '../../common/region.js'
+import { $ } from '../../common/utils.js'
 const tpl = (opts = {}) => {
     return `<div id="register-info-wrapper" class="register-info-wrapper">
                 <form id="register-info-form" class="register-info-form" onsubmit="return fasle">
@@ -38,4 +40,8 @@ const tpl = (opts = {}) => {
 }
 export default (conf) => {
     conf.container.innerHTML = tpl(conf)
+    const region = new Region({
+        container:$('register-info-address'),
+        name:'region'
+    })
 }

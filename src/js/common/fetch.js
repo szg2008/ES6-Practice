@@ -13,4 +13,21 @@ const fetchPost = (url,params) => {
         return res.json()
     })
 }
-export { fetchPost }
+
+const fetchJson = (url,params) => {
+    return fetch(url,{
+        method:'GET',
+        headers:{
+
+        },
+        credentials:'include',
+        params:params
+    }).then((res) => {
+        if(!res.ok){
+            throw Error(res.statusText)
+        }
+        return res.json()
+    })
+}
+
+export { fetchPost,fetchJson }

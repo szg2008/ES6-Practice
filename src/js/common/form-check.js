@@ -14,8 +14,31 @@ const rules = {
             }
         }
     },
+    ltFFFF:(v) => {
+        if(v.match(/\u{ffff}-\u{fffff}/u)){
+            return {
+                type:'ltFFFF',
+                message:'您输入了非法字符'
+            }
+        }
+    },
+    noOther:(v) => {
+        if(v.match(/[\p{C}]/u)){
+            return {
+                type:'noOther',
+                message:'您输入了非法字符'
+            }
+        }
+    },
     email:(v) => {
-        return
+        return (v) => {
+            if(!v.match(/^([\w\d_\.\-])+\@(([\w\d\-])+\.)+([\w\d]{2,4})+$/)){
+                return {
+                    type:'email',
+                    message:'请输入正确的邮箱地址'
+                }
+            }
+        }
     },
     present:(v) => {
         if(!v.trim()){
