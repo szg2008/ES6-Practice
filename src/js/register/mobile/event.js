@@ -1,5 +1,5 @@
 import Slider from '../../common/slider.js'
-import { getId as $,addClass,removeClass } from '../../common/utils'
+import {$,addClass,removeClass } from '../../common/utils'
 import {fetchPost} from '../../common/fetch.js'
 import { check } from '../../common/form-check.js'
 export default (opts) => {
@@ -17,7 +17,6 @@ export default (opts) => {
     const slider = new Slider({
         container:$('register-verify-wrapper'),
         success: async ($wrapper,$text,offsetArr) => {
-            console.log($wrapper)
             const offsetMsg = offsetArr.join(':')
             let data = await fetchPost('/getMobileVerifyToken',{
                 offsetMsg:offsetMsg

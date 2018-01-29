@@ -1,4 +1,4 @@
-import { getId } from '../common/utils.js'
+import { $ } from '../common/utils.js'
 const template = (opts = {}) => {
     const autocompleteTpl = `
         <div id="no-autocomplete">
@@ -42,7 +42,7 @@ const template = (opts = {}) => {
 export default (conf = {}) => {
     //document.getElementById('login-wrapper')
     conf.container.innerHTML = template(conf)
-    const $noAutocomplete = getId('no-autocomplete')
+    const $noAutocomplete = $('no-autocomplete')
     if($noAutocomplete){
         $noAutocomplete.style.opacity = '0'
         $noAutocomplete.style.height = '0'

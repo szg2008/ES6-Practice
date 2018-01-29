@@ -1,4 +1,4 @@
-import { getId as $ } from '../common/utils.js'
+import { $ } from '../common/utils.js'
 const render = Symbol('render')
 const event = Symbol('event')
 const style = `<style>
@@ -90,7 +90,6 @@ class Slider {
             this.startX = e.pageX
             this.startY = e.pageY
             this.offsetArr = []
-
         }
         window.onmousemove = (e) => {
             if(this.$start && !this.$end){

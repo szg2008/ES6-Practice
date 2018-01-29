@@ -5,7 +5,7 @@ const getId = (id) => {
 }
 
 const hasClass = (obj,cls) => {
-    return obj.className.match(new RegExp('(\\s|^)' + cls + '\\s|$'))
+    return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'))
 }
 
 const addClass = (obj,cls) => {
@@ -17,8 +17,8 @@ const addClass = (obj,cls) => {
 
 const removeClass = (obj,cls) => {
     if(hasClass(obj,cls)) {
-        const reg = new RegExp('(\\s|^)' + cls + '\\s|$')
+        const reg = new RegExp('(\\s|^)' + cls + '(\\s|$)')
         obj.className = obj.className.replace(reg,' ')
     }
 }
-export { getId,addClass,removeClass }
+export { getId as $,addClass,removeClass }

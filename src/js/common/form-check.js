@@ -13,7 +13,6 @@ const rules = {
                 message:'手机号验证不正确'
             }
         }
-
     },
     email:(v) => {
         return

@@ -1,4 +1,4 @@
-import { getId as $ } from '../common/utils.js'
+import { $ } from '../common/utils.js'
 import {fetchPost} from '../common/fetch.js'
 import { check } from '../common/form-check.js'
 export default (opts = {}) => {
