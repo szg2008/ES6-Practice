@@ -58,3 +58,16 @@ FetchMock.mock('/register/info', (url, opts) => {
 FetchMock.mock('/register/payment', (url, opts) => {
     return { code: 200, message: 'success' }
 });
+
+FetchMock.mock('/profile', (url, opts) => {
+    return { code: 200, message: 'success',data:{
+        nickname:'xiaoming',
+        mobile:'14322210900',
+        email:'11@qq.com',
+        realname:'小红',
+        sex:2,
+        birthday:'2018-10-20',
+        regionCode:'9,73,723',
+        regionString:'上海市静安区'
+    } }
+});

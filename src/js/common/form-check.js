@@ -31,12 +31,10 @@ const rules = {
         }
     },
     email:(v) => {
-        return (v) => {
-            if(!v.match(/^([\w\d_\.\-])+\@(([\w\d\-])+\.)+([\w\d]{2,4})+$/)){
-                return {
-                    type:'email',
-                    message:'请输入正确的邮箱地址'
-                }
+        if(!v.match(/^([\w\d_\.\-])+\@(([\w\d\-])+\.)+([\w\d]{2,4})+$/)){
+            return {
+                type:'email',
+                message:'请输入正确的邮箱地址'
             }
         }
     },

@@ -11,8 +11,10 @@ const regInfo = (opts = {}) => {
 
     }
     const options = Object.assign(defalutOptions,opts)
-    render(options)
-    bindEvent(options)
+    render(options).then(() => {
+        bindEvent(options)
+    })
+
 }
 
 export { regInfo }

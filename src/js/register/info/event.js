@@ -13,9 +13,11 @@ export default (opts = {}) => {
             formValues[item.name] = item.value
         }
     })
-    $form.onsubmit = async () => {
+    $form.onsubmit = async (e) => {
+        e.preventDefault()
         let checkResults = check($form)
         if(checkResults.length){
+            console.log(JSON.stringify(checkResults))
             const name = checkResults[0].name
             const type = checkResults[0].type
             const message = checkResults[0].message
@@ -24,7 +26,6 @@ export default (opts = {}) => {
             }else{
                 alert(message)
             }
-
         }else{
             let data = await fetchPost('/register/info',formValues)
             if(data.code === 200){
