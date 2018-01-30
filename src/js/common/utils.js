@@ -21,4 +21,29 @@ const removeClass = (obj,cls) => {
         obj.className = obj.className.replace(reg,' ')
     }
 }
-export { getId as $,addClass,removeClass }
+
+const isDom = (obj) => {
+    try{
+        return obj instanceof HTMLElement
+    }catch(e){
+        return (typeof obj === 'object') && (obj.nodeType === 1) && (typeof obj.style === 'object')
+    }
+}
+
+const checkOptions = (opts) => {
+    if(Object.prototype.toString.call(opts) !== '[object Object]'){
+        return false
+    }
+    if(!opts.container){
+        throw new Error('Container can not be empty !')
+        return false
+    }
+
+    if(!isDom(opts.container)){
+        throw new Error('Container must be a HTMLElement')
+        return false
+    }
+
+    return true
+}
+export { getId as $,addClass,removeClass,checkOptions }

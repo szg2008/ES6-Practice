@@ -19,6 +19,8 @@ class Region{
     async [render](opts) {
         let regionData = await fetchJson('/region-data',{})
         regionData = regionData.data
+        console.log(regionData)
+        //for of 用于循环数组 set map 不能循环json
         const tpl = `
             <div class="region-select-wrapper">
                 <select id="region-province-select"></select>

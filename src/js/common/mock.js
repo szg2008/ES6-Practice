@@ -50,3 +50,11 @@ FetchMock.mock('/register/mobile',(url,opts) => {
 FetchMock.mock('/region-data', (url, opts) => {
     return { code: 200, message: 'success', data: regionData }
 });
+
+FetchMock.mock('/register/info', (url, opts) => {
+    return { code: 200, message: 'success' }
+});
+
+FetchMock.mock('/register/payment', (url, opts) => {
+    return { code: 200, message: 'success' }
+});
