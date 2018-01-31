@@ -46,4 +46,21 @@ const checkOptions = (opts) => {
 
     return true
 }
-export { getId as $,addClass,removeClass,checkOptions }
+
+const getUrlParams = (key) => {
+    const query = location.search.replace(/^\?/,'')
+    let obj = {}
+    query.split('&').map((item) => {
+        let tmp = item.split('=')
+        obj[tmp[0]] = tmp[1]
+    })
+
+    if(!key){
+        return obj
+    }else{
+        return obj[key]
+    }
+
+
+}
+export { getId as $,addClass,removeClass,checkOptions, getUrlParams }
