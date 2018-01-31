@@ -1,6 +1,6 @@
 import {fetchPost} from '../common/fetch.js'
-import {$} from '../common/utils.js'
-import {check} from 'form-check'
+import {$,bindEvent} from '../common/utils.js'
+import {check} from '../common/form-check.js'
 export default (conf) => {
     const $saveBtn = $('save-delivery-address')
     const $list = $('delivery-address-list')
@@ -19,7 +19,7 @@ export default (conf) => {
 
             let data = await fetchPost('/save-delivery',formValues)
             if(data.code === 200){
-                opts.success && opts.success()
+                conf.success && conf.success()
             }else{
                 alert('保存失败')
             }
@@ -40,4 +40,16 @@ export default (conf) => {
         }
     }
     //删除收货地址
+    bindEvent($list,'click','.del-delivery-address',async (e) => {
+        if(confirm('确认删除收获地址')){
+            let data = await fetchPost('/del-delivery',{
+                addrId:e.target.getAttribute('data-id')
+            })
+            if(data.code === 200){
+                location.reload()
+            }else{
+                alert('收获地址删除失败')
+            }
+        }
+    })
 }

@@ -60,7 +60,40 @@ const getUrlParams = (key) => {
     }else{
         return obj[key]
     }
-
-
 }
-export { getId as $,addClass,removeClass,checkOptions, getUrlParams }
+
+//事件绑定或者事件代理,reset参数
+const bindEvent = (el,eventType,...args) => {
+    let selector
+    let fn
+    let target
+    const findNode = (element,selector,endel) => {
+        if(element === endel){
+            return
+        }
+        if(document.querySelector(selector).className === element.className){
+            target = el
+            return
+        }else{
+            findNode(element.parentNode,selector,endel)
+        }
+    }
+    if(typeof args[0] === 'string'){
+        selector = args[0]
+        if(typeof args[1] === 'function'){
+            fn = args[1]
+        }
+    }else if(typeof args[0] === 'function'){
+        fn = args[0]
+    }
+
+    el.addEventListener(eventType,function(e){
+        if(!selector){
+            fn.call(el,e)
+        }else if(selector){
+            findNode(e.target,selector,el)
+            target && fn.call(target,{target:target})
+        }
+    })
+}
+export { getId as $,addClass,removeClass,checkOptions, getUrlParams,bindEvent }

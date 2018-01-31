@@ -105,3 +105,23 @@ FetchMock.mock('/delivery-address', {
         addrId: 347
     }]
 })
+
+FetchMock.mock('/save-delivery', (url, opts) => {
+    return { code: 200, message: 'success' }
+});
+FetchMock.mock('/del-delivery', (url, opts) => {
+    return { code: 200, message: 'success' }
+});
+
+FetchMock.mock('/security-info', {
+    code: 200,
+    message: 'success',
+    data: {
+        nickname: 'xiaoming',
+        mobile: '18567286637',
+        email: 'xiaomong@163.com',
+        password: 1,
+        identity: 1,
+        secretQuestion: 0
+    }
+});
